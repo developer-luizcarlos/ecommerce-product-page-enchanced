@@ -1,7 +1,7 @@
 "use client";
 
 // hooks and utilities importation
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -21,9 +21,19 @@ import { Context } from "@/context/Context";
 const Header = () => {
   const { productState } = useContext(Context)!;
 
+  // state that define if the cart component is being shown or not
+  const [cartVisibility, setCartVisibility] = useState<boolean>(false);
+
+  // function that manages the cart visibility state
+  const defineCartVisibility = () => {
+    setCartVisibility((previousState) => {
+      return !previousState;
+    });
+  };
+
   return (
     <header className="relative flex items-stretch justify-between h-24 w-full border-b-2 border-b-LightGrayishBlue">
-      <Cart />
+      <Cart visible={cartVisibility} />
       <nav className="flex items-center gap-8">
         <Link href="/">
           <Image src={Logo} alt="Logo sneakers" width={200} height={200} />
@@ -62,7 +72,7 @@ const Header = () => {
         </ul>
       </nav>
       <div className="flex items-center gap-5">
-        <div className="relative">
+        <button className="relative" onClick={defineCartVisibility}>
           <CiShoppingCart className="text-3xl" />
           <span
             className={
@@ -74,7 +84,7 @@ const Header = () => {
             {" "}
             0
           </span>
-        </div>
+        </button>
         <div className="w-12 h-12 overflow-hidden rounded-full border-2 border-transparent cursor-pointer hover:duration-150 hover:ease-in-out hover:border-Orange">
           <Image
             src={Avatar}

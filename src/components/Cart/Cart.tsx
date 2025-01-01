@@ -1,5 +1,10 @@
 "use client";
 
+// types and interfaces
+interface CartProps {
+  visible: boolean;
+}
+
 // hooks and utilities importation
 import { useContext } from "react";
 
@@ -10,8 +15,12 @@ import FilledCart from "./FilledCart";
 // global context importation
 import { Context } from "@/context/Context";
 
-const Cart = () => {
+const Cart = ({ visible }: CartProps) => {
   const { productState } = useContext(Context)!;
+
+  if (!visible) {
+    return null;
+  }
 
   return (
     <article className="w-[360px] z-10 absolute -bottom-56 right-0 bg-white shadow-xl shadow-zinc-300 rounded-md">
