@@ -1,9 +1,12 @@
-"use client"
+"use client";
 
 // hooks and utilities importation
 import { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+
+// components importation
+import Cart from "../Cart/Cart";
 
 // images importation
 import Logo from "../../../public/images/logo.svg";
@@ -19,7 +22,8 @@ const Header = () => {
   const { productState } = useContext(Context)!;
 
   return (
-    <header className="flex items-stretch justify-between h-24 w-full border-b-2 border-b-LightGrayishBlue">
+    <header className="relative flex items-stretch justify-between h-24 w-full border-b-2 border-b-LightGrayishBlue">
+      <Cart />
       <nav className="flex items-center gap-8">
         <Link href="/">
           <Image src={Logo} alt="Logo sneakers" width={200} height={200} />
