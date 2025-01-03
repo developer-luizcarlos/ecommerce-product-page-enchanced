@@ -13,3 +13,7 @@ html {
   width: 100dvw;
   height: 100dvh;
 }
+
+.show-on-hover-child:hover > div {
+  height: 100%;
+}
