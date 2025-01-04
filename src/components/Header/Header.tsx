@@ -81,8 +81,7 @@ const Header = () => {
                 : "hidden"
             }
           >
-            {" "}
-            0
+            {productState.quantity}
           </span>
         </button>
         <div className="w-12 h-12 overflow-hidden rounded-full border-2 border-transparent cursor-pointer hover:duration-150 hover:ease-in-out hover:border-Orange">
