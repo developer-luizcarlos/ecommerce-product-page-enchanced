@@ -5,7 +5,7 @@ import { MouseEventHandler, ReactElement } from "react";
 interface ButtonProps {
   text: string;
   icon?: ReactElement;
-  event: MouseEventHandler;
+  event?: MouseEventHandler;
 }
 
 const Button = ({ text, icon, event }: ButtonProps) => {
