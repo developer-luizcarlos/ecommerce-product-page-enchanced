@@ -17,9 +17,9 @@ import ProductThumb from "../../../public/images/image-product-1-thumbnail.jpg";
 import { GoTrash } from "react-icons/go";
 
 const FilledCart = () => {
-  const { productState } = useContext(Context)!;
+  const { productState, productDispatch } = useContext(Context)!;
 
-  const formatedPrice = productState.quantity.toLocaleString("en-US", {
+  const formatedPrice = (productState.quantity * 125).toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
@@ -37,13 +37,16 @@ const FilledCart = () => {
         <div className="text-DarkGrayishBlue text-base  font-normal">
           <h3 className="capitalize">Fall Limited Edition Sneakers</h3>
           <small className="text-base flex items-center gap-2">
-            $125 x 3
+            {`$125 x ${productState.quantity}`}
             <span className="text-VeryDarkBlue font-semibold">
               {formatedPrice}
             </span>
           </small>
         </div>
-        <button className="text-xl">
+        <button
+          className="text-xl"
+          onClick={() => productDispatch({ type: "RESET" })}
+        >
           <GoTrash />
         </button>
       </section>
