@@ -24,13 +24,13 @@ const Selector = forwardRef<EventSelector, {}>((props, ref) => {
   }));
 
   const handleIncrement = () => {
-    setQuantity((previousState) => {
+    return setQuantity((previousState) => {
       return previousState + 1;
     });
   };
 
   const handleDecrement = () => {
-    setQuantity((previousState) => {
+    return setQuantity((previousState) => {
       return previousState > 0 ? previousState - 1 : previousState;
     });
   };

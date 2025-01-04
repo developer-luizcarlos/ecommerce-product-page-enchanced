@@ -29,8 +29,6 @@ const Home = () => {
 
   const selectorRef = useRef<EventSelector>(null);
 
-  const productQuantity = selectorRef.current?.getItem();
-
   return (
     <>
       <main className="w-full grid grid-cols-2 place-items-center my-10">
@@ -92,7 +90,10 @@ const Home = () => {
               text="Add to cart"
               icon={<IoMdCart />}
               event={() =>
-                productDispatch({ type: "SET", payload: productQuantity! })
+                productDispatch({
+                  type: "SET",
+                  payload: selectorRef.current!.getItem(),
+                })
               }
             />
           </div>
