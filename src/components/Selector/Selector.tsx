@@ -3,18 +3,29 @@
 "use client";
 
 // hooks and utilities importation
-import { forwardRef, useState, useImperativeHandle } from "react";
+import {
+  forwardRef,
+  useState,
+  useImperativeHandle,
+  useEffect,
+  useContext,
+} from "react";
 
 // types and interfaces
 export type EventSelector = {
   getItem: () => number;
 };
 
+// global context importation
+import { Context } from "@/context/Context";
+
 // icons importation
 import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 
 const Selector = forwardRef<EventSelector, {}>((props, ref) => {
+  const { productState } = useContext(Context)!;
+
   const [quantity, setQuantity] = useState<number>(0);
 
   useImperativeHandle(ref, () => ({
@@ -34,6 +45,16 @@ const Selector = forwardRef<EventSelector, {}>((props, ref) => {
       return previousState > 0 ? previousState - 1 : previousState;
     });
   };
+
+  const handleResetQuantity = () => {
+    return setQuantity(0);
+  };
+
+  useEffect(() => {
+    if (productState.quantity === 0) {
+      handleResetQuantity();
+    }
+  }, [productState.quantity]);
 
   return (
     <div className="h-12 w-60 bg-gray-100 rounded overflow-hidden flex items-center justify-between">
