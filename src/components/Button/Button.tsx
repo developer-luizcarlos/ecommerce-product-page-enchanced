@@ -1,11 +1,20 @@
+// hooks and utilities
+import { MouseEventHandler, ReactElement } from "react";
+
 // types and interfaces
 interface ButtonProps {
   text: string;
+  icon?: ReactElement;
+  event: MouseEventHandler;
 }
 
-const Button = ({ text }: ButtonProps) => {
+const Button = ({ text, icon, event }: ButtonProps) => {
   return (
-    <button className="w-full h-12 bg-Orange text-VeryDarkBlue text-base font-bold capitalize border-none rounded-md">
+    <button
+      onClick={event}
+      className="w-full h-12 flex items-center justify-center gap-4 bg-Orange text-VeryDarkBlue text-base font-bold capitalize border-none rounded-md"
+    >
+      {icon ? icon : ""}
       {text}
     </button>
   );

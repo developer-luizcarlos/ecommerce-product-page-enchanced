@@ -1,7 +1,7 @@
 "use client";
 
 // hooks and utilities importation
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import Image from "next/image";
 
 // types and interfaces
@@ -16,10 +16,15 @@ import ProductThumbComponent from "@/components/ProductThumb/ProductThumbCompone
 import Selector from "@/components/Selector/Selector";
 import Button from "@/components/Button/Button";
 
+// global context importation
+import { Context } from "@/context/Context";
+
 // icons importation
 import { IoMdCart } from "react-icons/io";
 
 const Home = () => {
+  const { productDispatch } = useContext(Context)!;
+
   const [imageIndex, setImageIndex] = useState<number>(0);
 
   const selectorRef = useRef<EventSelector>(null);
@@ -83,7 +88,13 @@ const Home = () => {
 
           <div className="w-4/5 flex items-center gap-2">
             <Selector ref={selectorRef} />
-            <Button text="Add to cart" />
+            <Button
+              text="Add to cart"
+              icon={<IoMdCart />}
+              event={() =>
+                productDispatch({ type: "SET", payload: productQuantity! })
+              }
+            />
           </div>
         </section>
       </main>
