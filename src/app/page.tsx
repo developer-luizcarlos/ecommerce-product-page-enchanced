@@ -1,11 +1,12 @@
 "use client";
 
+// types and interfaces
+import { EventSelector } from "@/components/Selector/Selector";
+import { EventModal } from "@/components/ModalSlider/ModalSlider";
+
 // hooks and utilities importation
 import { useState, useRef, useContext } from "react";
 import Image from "next/image";
-
-// types and interfaces
-import { EventSelector } from "@/components/Selector/Selector";
 
 // images importation
 import productPhotos from "@/lib/productPhotos";
@@ -15,6 +16,7 @@ import photoThumbs from "@/lib/productThumbnailPhoto";
 import ProductThumbComponent from "@/components/ProductThumb/ProductThumbComponent";
 import Selector from "@/components/Selector/Selector";
 import Button from "@/components/Button/Button";
+import ModalSlider from "@/components/ModalSlider/ModalSlider";
 
 // global context importation
 import { Context } from "@/context/Context";
@@ -23,20 +25,30 @@ import { Context } from "@/context/Context";
 import { IoMdCart } from "react-icons/io";
 
 const Home = () => {
+  // global context usage
   const { productDispatch } = useContext(Context)!;
 
   const [imageIndex, setImageIndex] = useState<number>(0);
 
+  // refs
   const selectorRef = useRef<EventSelector>(null);
+  const modalRef = useRef<EventModal>(null);
+
+  const showModal = () => {
+    modalRef.current!.defineImageIndex(imageIndex);
+    modalRef.current!.openModal();
+  };
 
   return (
     <>
+      <ModalSlider ref={modalRef} />
       <main className="w-full grid grid-cols-2 place-items-center my-10">
         <aside className="w-full flex flex-col items-center justify-center gap-5">
           <Image
             src={productPhotos[imageIndex]}
             alt={`Product photo number ${imageIndex} of four`}
             className="w-[70%] h-[390px] object-cover rounded-md"
+            onClick={showModal}
           />
           <div className="w-[70%] flex gap-4 items-center justify-between">
             {photoThumbs.map((thumb, index) => {
