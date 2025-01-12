@@ -17,7 +17,7 @@ import ProductThumbComponent from "@/components/ProductThumb/ProductThumbCompone
 import Selector from "@/components/Selector/Selector";
 import Button from "@/components/Button/Button";
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
-import MobileSlider from "@/components/mobileSlider/mobileSlider";
+import MobileSlider from "@/components/MobileSlider/MobileSlider";
 
 // global context importation
 import { Context } from "@/context/Context";
@@ -44,7 +44,7 @@ const Home = () => {
     <>
       <ModalSlider ref={modalRef} />
       <main className="w-full grid grid-cols-1 md:grid-cols-2 place-items-center md:my-10">
-        <aside className="w-full hidden lg:flex flex-col items-center justify-center gap-5">
+        <aside className="w-full hidden md:flex flex-col items-center justify-center gap-5">
           <Image
             src={productPhotos[imageIndex]}
             alt={`Product photo number ${imageIndex} of four`}
@@ -65,7 +65,7 @@ const Home = () => {
           </div>
         </aside>
         <MobileSlider />
-        <section className="flex flex-col px-8 pt-4 justify-center gap-7">
+        <section className="flex flex-col px-8 pt-4 md:p-0 justify-center gap-7">
           <header className="flex flex-col gap-3">
             <h3 className="uppercase text-DarkGrayishBlue text-sm font-bold tracking-wide">
               sneaker company
