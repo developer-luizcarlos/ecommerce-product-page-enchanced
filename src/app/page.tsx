@@ -17,6 +17,7 @@ import ProductThumbComponent from "@/components/ProductThumb/ProductThumbCompone
 import Selector from "@/components/Selector/Selector";
 import Button from "@/components/Button/Button";
 import ModalSlider from "@/components/ModalSlider/ModalSlider";
+import MobileSlider from "@/components/mobileSlider/mobileSlider";
 
 // global context importation
 import { Context } from "@/context/Context";
@@ -42,8 +43,8 @@ const Home = () => {
   return (
     <>
       <ModalSlider ref={modalRef} />
-      <main className="w-full grid grid-cols-2 place-items-center my-10">
-        <aside className="w-full flex flex-col items-center justify-center gap-5">
+      <main className="w-full grid grid-cols-1 md:grid-cols-2 place-items-center md:my-10">
+        <aside className="w-full hidden lg:flex flex-col items-center justify-center gap-5">
           <Image
             src={productPhotos[imageIndex]}
             alt={`Product photo number ${imageIndex} of four`}
@@ -63,7 +64,8 @@ const Home = () => {
             })}
           </div>
         </aside>
-        <section className="flex flex-col justify-center gap-7">
+        <MobileSlider />
+        <section className="flex flex-col px-8 pt-4 justify-center gap-7">
           <header className="flex flex-col gap-3">
             <h3 className="uppercase text-DarkGrayishBlue text-sm font-bold tracking-wide">
               sneaker company
@@ -96,7 +98,7 @@ const Home = () => {
             </small>
           </div>
 
-          <div className="w-4/5 flex items-center gap-2">
+          <div className="w-full flex flex-col md:flex-row items-center gap-2">
             <Selector ref={selectorRef} />
             <Button
               text="Add to cart"

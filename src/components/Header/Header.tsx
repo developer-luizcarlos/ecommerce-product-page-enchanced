@@ -14,6 +14,7 @@ import Avatar from "../../../public/images/image-avatar.png";
 
 // icons importation
 import { CiShoppingCart } from "react-icons/ci";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 // global context importation
 import { Context } from "@/context/Context";
@@ -32,13 +33,16 @@ const Header = () => {
   };
 
   return (
-    <header className="relative flex items-stretch justify-between h-24 w-full border-b-2 border-b-LightGrayishBlue">
+    <header className="relative flex items-stretch justify-between px-6 md:px-0 h-24 w-full border-b-2 border-b-LightGrayishBlue">
       <Cart visible={cartVisibility} />
-      <nav className="flex items-center gap-8">
+      <nav className="flex items-center gap-5 md:gap-8">
+        <button className="md:hidden text-lg cursor-pointer">
+          <RxHamburgerMenu />
+        </button>
         <Link href="/">
           <Image src={Logo} alt="Logo sneakers" width={200} height={200} />
         </Link>
-        <ul className="h-full flex items-center justify-center gap-5 text-DarkGrayishBlue font-medium">
+        <ul className="h-full hidden md:flex items-center justify-center gap-5 text-DarkGrayishBlue font-medium">
           <Link
             href="/collections"
             className="relative h-full flex items-center after:absolute after:-bottom-[1px] after:w-0 after:h-1 after:bg-Orange after:duration-150 after:ease-in-out hover:after:w-full hover:text-VeryDarkBlue"

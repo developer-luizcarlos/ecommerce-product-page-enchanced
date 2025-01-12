@@ -25,7 +25,7 @@ import { PiLessThan } from "react-icons/pi";
 import { TbMathGreater } from "react-icons/tb";
 
 // main component
-const ModalSlider = forwardRef<EventModal, {}>(({}, ref) => {
+const ModalSlider = forwardRef<EventModal, {}>(({ }, ref) => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false); // controls the visibility of the modal slider
   const [imageIndex, setImageIndex] = useState<number>(0); // defines the index of the shown image
 

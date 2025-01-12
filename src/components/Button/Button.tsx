@@ -12,7 +12,7 @@ const Button = ({ text, icon, event }: ButtonProps) => {
   return (
     <button
       onClick={event}
-      className="w-full h-12 flex items-center justify-center gap-4 bg-Orange text-VeryDarkBlue text-base font-bold capitalize border-none rounded-md"
+      className="w-full md:max-w-64 h-12 flex items-center justify-center gap-4 bg-Orange text-VeryDarkBlue text-base font-bold capitalize border-none rounded-md"
     >
       {icon ? icon : ""}
       {text}

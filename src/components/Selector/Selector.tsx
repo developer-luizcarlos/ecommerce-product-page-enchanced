@@ -57,7 +57,7 @@ const Selector = forwardRef<EventSelector, {}>((props, ref) => {
   }, [productState.quantity]);
 
   return (
-    <div className="h-12 w-60 bg-gray-100 rounded overflow-hidden flex items-center justify-between">
+    <div className="h-12 w-full md:w-52 bg-gray-100 rounded overflow-hidden flex items-center justify-between">
       <button
         onClick={handleDecrement}
         className="w-11 h-full text-Orange flex items-center justify-center"
